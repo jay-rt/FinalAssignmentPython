@@ -27,7 +27,7 @@ def login():
     with open(os.path.join(path, username + ".json"), "r") as read_file:
       data = json.load(read_file)
   except FileNotFoundError:
-    print("We don't have your account information. Please register and try again.")
+    print("\nWe don't have your account information. Please register and try again.")
     signUp()
   else:
     if data['username'] == username and data['password'] == password:
@@ -35,7 +35,7 @@ def login():
       with open('current_user.json', 'w') as current_file:
         json.dump(data, current_file, indent = 2)
     else:
-      print("Incorrect username or password. Try again!")
+      print("Incorrect username or password. Try again!\n")
       login()
     
 def signUp():
@@ -51,6 +51,7 @@ def signUp():
     password1 = input("Password: ")
     password2 = input("Re-type your password: ")
     if password1 != password2:
+      print('Incorrect Password. Please try again!\n')
       signUp()
     else:
       print("Congratulations! You have created an account\n")
